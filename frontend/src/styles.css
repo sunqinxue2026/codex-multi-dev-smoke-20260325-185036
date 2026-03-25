@@ -1,0 +1,59 @@
+:root {
+  color: #2a1f16;
+  background: #fff7ef;
+  font-family: Inter, system-ui, sans-serif;
+}
+body {
+  margin: 0;
+}
+.page {
+  min-height: 100vh;
+}
+.hero {
+  padding: 32px;
+  background: linear-gradient(135deg, #ffb366, #ff7a00);
+  color: white;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 12px;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  padding: 24px 32px 40px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+}
+.card, .cart {
+  background: white;
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+.emoji {
+  font-size: 42px;
+}
+button {
+  background: #ff7a00;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+.total {
+  font-weight: 700;
+}
+.status {
+  color: #0b8f3f;
+}
