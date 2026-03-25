@@ -1,0 +1,9 @@
+[project]
+name = "snack-store"
+version = "0.1.0"
+description = "Snack store MVP"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
