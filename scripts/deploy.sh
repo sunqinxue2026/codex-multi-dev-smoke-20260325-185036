@@ -7,7 +7,10 @@ APP_PORT="${APP_PORT:-8000}"
 
 cd "$DEPLOY_PATH"
 
-python3 -m venv .venv
+if ! python3 -m venv .venv; then
+  python3 -m pip install --user virtualenv
+  python3 -m virtualenv .venv
+fi
 . .venv/bin/activate
 
 python -m pip install --upgrade pip
