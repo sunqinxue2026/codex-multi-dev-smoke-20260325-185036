@@ -78,5 +78,6 @@ jobs:
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_SUDO_PASSWORD: ${{ secrets.DEPLOY_SUDO_PASSWORD }}
         run: |
-          ssh -p "${DEPLOY_PORT:-22}" "$DEPLOY_USER@$DEPLOY_HOST" "cd '$DEPLOY_PATH' && chmod +x scripts/deploy.sh && DEPLOY_PATH='$DEPLOY_PATH' bash scripts/deploy.sh"
+          ssh -p "${DEPLOY_PORT:-22}" "$DEPLOY_USER@$DEPLOY_HOST" "cd '$DEPLOY_PATH' && chmod +x scripts/deploy.sh && DEPLOY_PATH='$DEPLOY_PATH' DEPLOY_SUDO_PASSWORD='$DEPLOY_SUDO_PASSWORD' bash scripts/deploy.sh"
