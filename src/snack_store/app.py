@@ -1,36 +1,27 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import json
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from .catalog import list_snacks
+from .schemas import OrderRequest, OrderResponse, Snack
 
+app = FastAPI(title="Snack Store API", version="0.2.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-class SnackHandler(BaseHTTPRequestHandler):
-    def _json(self, status, payload):
-        self.send_response(status)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.end_headers()
-        self.wfile.write(json.dumps(payload, ensure_ascii=False).encode("utf-8"))
+@app.get("/health")
+def healthcheck():
+    return {"status": "ok"}
 
-    def do_GET(self):
-        if self.path == "/api/snacks":
-            self._json(200, {"items": list_snacks()})
-            return
-        self._json(404, {"error": "not_found"})
+@app.get("/api/snacks", response_model=dict[str, list[Snack]])
+def get_snacks():
+    return {"items": list_snacks()}
 
-    def do_POST(self):
-        if self.path == "/api/orders":
-            length = int(self.headers.get("Content-Length", "0"))
-            raw = self.rfile.read(length or 0)
-            body = json.loads(raw.decode("utf-8") or "{}") if raw else {}
-            self._json(201, {"message": "order_created", "payload": body})
-            return
-        self._json(404, {"error": "not_found"})
-
-
-def main():
-    server = HTTPServer(("127.0.0.1", 8000), SnackHandler)
-    print("Snack API running at http://127.0.0.1:8000")
-    server.serve_forever()
-
-
-if __name__ == "__main__":
-    main()
+@app.post("/api/orders", response_model=OrderResponse)
+def create_order(order: OrderRequest):
+    total_items = sum(item.quantity for item in order.items)
+    return OrderResponse(message="order_created", total_items=total_items)
