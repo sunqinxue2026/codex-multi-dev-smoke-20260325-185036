@@ -21,3 +21,9 @@ def test_create_order():
     response = client.post('/api/orders', json={'items': [{'id': 1, 'quantity': 2}]})
     assert response.status_code == 200
     assert response.json()['message'] == 'order_created'
+
+
+def test_root_without_frontend_build():
+    response = client.get('/')
+    assert response.status_code == 200
+    assert response.json()['message'] == 'Snack Store API'
