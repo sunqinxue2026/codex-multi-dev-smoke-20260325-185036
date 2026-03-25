@@ -4,12 +4,28 @@ set -euo pipefail
 DEPLOY_PATH="${DEPLOY_PATH:-$(cd "$(dirname "$0")/.." && pwd)}"
 APP_HOST="${APP_HOST:-0.0.0.0}"
 APP_PORT="${APP_PORT:-8000}"
+DEPLOY_SUDO_PASSWORD="${DEPLOY_SUDO_PASSWORD:-}"
 
 cd "$DEPLOY_PATH"
 
+run_sudo() {
+  if [ -n "$DEPLOY_SUDO_PASSWORD" ]; then
+    printf '%s\n' "$DEPLOY_SUDO_PASSWORD" | sudo -S "$@"
+    return
+  fi
+  sudo "$@"
+}
+
 if ! python3 -m venv .venv; then
-  python3 -m pip install --user virtualenv
-  python3 -m virtualenv .venv
+  if ! python3 -m pip --version >/dev/null 2>&1; then
+    run_sudo apt-get update
+    run_sudo apt-get install -y python3-pip python3-venv
+  fi
+
+  if ! python3 -m venv .venv; then
+    python3 -m pip install --user virtualenv
+    python3 -m virtualenv .venv
+  fi
 fi
 . .venv/bin/activate
 
