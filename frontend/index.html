@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>零食小铺</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header><h1>零食小铺</h1><p>商品列表、购物车、下单按钮</p></header>
+    <main>
+      <section>
+        <h2>商品列表</h2>
+        <div id="product-list" class="grid"></div>
+      </section>
+      <aside class="cart">
+        <h2>购物车</h2>
+        <ul id="cart-items"></ul>
+        <p id="cart-total">合计：¥0</p>
+        <button id="checkout-btn">立即下单</button>
+        <p id="order-status"></p>
+      </aside>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background: #fff7f0; color: #2b1d0e; }
+header { padding: 24px; background: #ffb366; color: #fff; }
+main { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; padding: 24px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+.card, .cart { background: white; border-radius: 16px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+button { background: #ff7a00; color: white; border: 0; border-radius: 999px; padding: 10px 14px; cursor: pointer; }
