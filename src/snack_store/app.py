@@ -22,7 +22,7 @@ app.add_middleware(
 
 @app.get("/health")
 def healthcheck():
-    return {"status": "ok"}
+    return {"status": "ok", "version": app.version}
 
 @app.get("/api/snacks", response_model=dict[str, list[Snack]])
 def get_snacks():
