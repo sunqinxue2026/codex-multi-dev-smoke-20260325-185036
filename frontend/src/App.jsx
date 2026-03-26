@@ -23,6 +23,11 @@ export default function App() {
     setCart((prev) => [...prev, product])
   }
 
+  function clearCart() {
+    setCart([])
+    setStatus('购物车已清空')
+  }
+
   async function checkout() {
     const items = cart.map((item) => ({ id: item.id, quantity: 1 }))
     const resp = await fetch(`${API_BASE}/api/orders`, {
@@ -68,7 +73,10 @@ export default function App() {
             ))}
           </ul>
           <p className="total">合计：¥{total}</p>
-          <button disabled={!cart.length} onClick={checkout}>立即下单</button>
+          <div className="cart-actions">
+            <button disabled={!cart.length} onClick={checkout}>立即下单</button>
+            <button type="button" disabled={!cart.length} onClick={clearCart}>清空购物车</button>
+          </div>
           <p className="status">{status}</p>
         </aside>
       </main>
