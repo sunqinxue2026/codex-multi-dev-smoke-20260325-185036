@@ -11,6 +11,7 @@ def test_healthcheck():
     payload = response.json()
     assert payload['status'] == 'ok'
     assert payload['version'] == '0.2.0'
+    assert payload['service'] == 'snack-store'
 
 
 def test_get_snacks():
