@@ -6,6 +6,7 @@ class Snack(BaseModel):
     price: int
     stock: int
     image: str
+    featured: bool = False
 
 class OrderItem(BaseModel):
     id: int
