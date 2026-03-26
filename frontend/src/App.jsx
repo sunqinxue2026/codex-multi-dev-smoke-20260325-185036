@@ -74,6 +74,7 @@ export default function App() {
               <li key={`${item.id}-${index}`}>{item.name} - ¥{item.price}</li>
             ))}
           </ul>
+          <p className="cart-count">当前件数：{cart.length}</p>
           <p className="total">合计：¥{total}</p>
           <div className="cart-actions">
             <button disabled={!cart.length} onClick={checkout}>立即下单</button>
