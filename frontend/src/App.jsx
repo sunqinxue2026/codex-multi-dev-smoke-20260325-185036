@@ -40,6 +40,7 @@ export default function App() {
         <div>
           <p className="eyebrow">Snack Store MVP</p>
           <h1>零食小铺</h1>
+          <p>本周推荐零食</p>
           <p>React 前端 + FastAPI 后端，支持商品列表、购物车和下单。</p>
         </div>
       </header>
