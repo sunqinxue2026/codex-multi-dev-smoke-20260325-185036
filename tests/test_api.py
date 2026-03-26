@@ -14,7 +14,13 @@ def test_healthcheck():
 def test_get_snacks():
     response = client.get('/api/snacks')
     assert response.status_code == 200
-    assert len(response.json()['items']) >= 3
+    data = response.json()
+    assert 'items' in data
+    assert len(data['items']) >= 3
+    # Verify featured field is present and boolean
+    for item in data['items']:
+        assert 'featured' in item
+        assert isinstance(item['featured'], bool)
 
 
 def test_create_order():
