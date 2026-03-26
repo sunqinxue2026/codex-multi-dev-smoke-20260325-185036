@@ -47,6 +47,7 @@ export default function App() {
           <h1>零食小铺</h1>
           <p>React 前端 + FastAPI 后端，支持商品列表、购物车和下单。</p>
           <p className="hero-note">本周推荐零食：海盐黄油薯片和抹茶曲奇。</p>
+          <p className="hero-tip">满 2 件全国包邮。</p>
         </div>
       </header>
 
