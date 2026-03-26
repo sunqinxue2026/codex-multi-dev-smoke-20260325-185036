@@ -19,6 +19,10 @@ export default function App() {
     [cart]
   )
 
+  function clearCart() {
+    setCart([])
+  }
+
   function addToCart(product) {
     setCart((prev) => [...prev, product])
   }
@@ -69,6 +73,7 @@ export default function App() {
           </ul>
           <p className="total">合计：¥{total}</p>
           <button disabled={!cart.length} onClick={checkout}>立即下单</button>
+          <button onClick={clearCart}>清空购物车</button>
           <p className="status">{status}</p>
         </aside>
       </main>
