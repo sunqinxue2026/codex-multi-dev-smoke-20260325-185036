@@ -288,24 +288,6 @@ export default function App() {
           </div>
         </section>
 
-<<<<<<< HEAD
-        <aside className="cart">
-          <h2>购物车</h2>
-          <ul>
-            {cart.map((item, index) => (
-              <li key={`${item.id}-${index}`}>{item.name} - ¥{item.price}</li>
-            ))}
-          </ul>
-          <p className="cart-count">当前件数：{cart.length}</p>
-          <p className="total">合计：¥{total}</p>
-          <div className="cart-actions">
-            <button disabled={!cart.length} onClick={checkout}>立即下单</button>
-            <button type="button" disabled={!cart.length} onClick={clearCart}>清空购物车</button>
-          </div>
-          <p className="status">{status}</p>
-        </aside>
-      </main>
-=======
         <main className="content">
           <section className="catalog-panel">
             <div className="filters">
@@ -509,7 +491,6 @@ export default function App() {
           </aside>
         </main>
       </div>
->>>>>>> 11e5607 (feat: expand snack store web experience)
     </div>
   )
 }
